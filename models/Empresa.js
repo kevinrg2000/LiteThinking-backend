@@ -23,6 +23,17 @@ const empresaSchema = mongoose.Schema(
       telefono: {
         type: Number,
       },
+      dueño:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Usuario',
+      },
+      articulos:[
+        {
+          type: mongoose.Schema.Types.ObjectId,
+        ref: 'Articulos',
+        },
+      ],
+      
     },
     {
       timestamps: true,

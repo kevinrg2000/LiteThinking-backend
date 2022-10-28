@@ -66,6 +66,7 @@ const autenticar = async (req, res) => {
 const confirmar = async (req, res) => {
   const { token } = req.params;
   const usuarioConfirmar = await Usuario.findOne({ token });
+  console.log('usuarioConfirmar:',usuarioConfirmar);
   if (!usuarioConfirmar) {
     const error = new Error("Token no válido");
     return res.status(403).json({ msg: error.message });
@@ -83,7 +84,9 @@ const confirmar = async (req, res) => {
 
 const olvidePassword = async (req, res) => {
   const { email } = req.body;
+  console.log('email:',email);
   const usuario = await Usuario.findOne({ email });
+  console.log('usuario:',usuario);
   if (!usuario) {
     const error = new Error("El Usuario no existe");
     return res.status(404).json({ msg: error.message });
