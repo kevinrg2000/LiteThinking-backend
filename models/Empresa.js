@@ -22,6 +22,8 @@ const empresaSchema = mongoose.Schema(
       },
       telefono: {
         type: Number,
+        required: true,
+        trim: true,
       },
       dueño:{
         type: mongoose.Schema.Types.ObjectId,
