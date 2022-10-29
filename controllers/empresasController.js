@@ -1,5 +1,6 @@
+import Articulos from "../models/Articulos.js";
 import Empresa from "../models/Empresa.js";
-import Usuario from "../models/Usuario.js";
+import {jsPDF} from "jspdf"
 
 const nuevoEmpresa = async (req, res) => {
   const empresa = new Empresa(req.body);
@@ -22,8 +23,24 @@ const obtenerEmpresas = async (req, res) => {
 const obtenerEmpresa = async (req, res) => {
   const {id} = req.params;
   const empresa = await Empresa.findById(id)
-  !empresa? res.status(400).json({msg: "No Encontrado"}): 
-  res.json(empresa);
+  const articulos = await Articulos.find().where("empresas").equals(empresa._id) 
+  const doc = new jsPDF()
+  if(!empresa) 
+    res.status(400).json({msg: "No Encontrado"}) 
+    else{
+      let jsonObject = {empresa, articulos}
+      
+      console.log('articulos:',articulos);
+      
+      for(let i=0; i<articulos.length; i++){
+        doc.text(10, 10 + (i * 10),
+        " NOMBRE : "+ articulos[i].nombre+
+        " empresa : "+ empresa.nombre);
+      };
+      const pdfName = empresa.nombre+'.pdf'
+      doc.save(pdfName)
+      res.json({empresa, articulos});
+    }
   
 
 };
@@ -67,17 +84,7 @@ const eliminarEmpresa = async (req, res) => {
   
 };
 
-const buscarArticulo = async (req, res) => {
-  
-};
 
-const agregarArticulo = async (req, res) => {
-  
-};
-
-const eliminarArticulo = async (req, res) => {
-  
-};
 
 export {
   obtenerEmpresas,
@@ -85,7 +92,4 @@ export {
   obtenerEmpresa,
   editarEmpresa,
   eliminarEmpresa,
-  buscarArticulo,
-  agregarArticulo,
-  eliminarArticulo,
 };

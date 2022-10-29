@@ -5,10 +5,7 @@ const router = express.Router();
  nuevoEmpresa,
  obtenerEmpresa,
  editarEmpresa,
- eliminarEmpresa,
- buscarArticulo,
- agregarArticulo,
- eliminarArticulo}   from "../controllers/empresasController.js";
+ eliminarEmpresa,}   from "../controllers/empresasController.js";
 import checkAuth from "../middleware/checkAuth.js";
 
 
@@ -22,9 +19,5 @@ router
   .get(checkAuth, obtenerEmpresa)
   .put(checkAuth, editarEmpresa)
   .delete(checkAuth, eliminarEmpresa);
-
-router.post("/articulos", checkAuth, buscarArticulo);
-router.post("/articulos/:id", checkAuth, agregarArticulo);
-router.post("/eliminar-articulo/:id", checkAuth, eliminarArticulo);
 
 export default router;
