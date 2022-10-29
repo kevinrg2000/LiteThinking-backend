@@ -25,14 +25,14 @@ const empresaSchema = mongoose.Schema(
         required: true,
         trim: true,
       },
-      dueño:{
+      creador: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Usuario',
+        ref: "Usuario",
       },
       articulos:[
         {
           type: mongoose.Schema.Types.ObjectId,
-        ref: 'Articulos',
+          ref: "Usuario",
         },
       ],
       

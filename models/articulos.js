@@ -9,20 +9,6 @@ const articulosSchema = mongoose.Schema(
         required: true,
         trim: true,
       },
-      estado: {
-        type: Boolean,
-        default: false,
-      },
-      descripcion: {
-        type: String,
-        trim: true,
-        required: true,
-      },
-      precio:{
-        type: Number,
-        trim:true,
-        required:true
-      },
       empresa:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Empresa',
@@ -33,5 +19,5 @@ const articulosSchema = mongoose.Schema(
     }
   );
 
-const Articulos = mongoose.model("Articulo", articulosSchema);
+const Articulos = mongoose.model("Articulos", articulosSchema);
 export default Articulos;

@@ -2,8 +2,7 @@ import Empresa from "../models/Empresa.js";
 import Usuario from "../models/Usuario.js";
 
 const nuevoEmpresa = async (req, res) => {
-  console.log('si entra');
-  const empresa = new Proyecto(req.body);
+  const empresa = new Empresa(req.body);
   empresa.creador = req.usuario._id;
 
   try {
@@ -15,12 +14,18 @@ const nuevoEmpresa = async (req, res) => {
   
 };
 const obtenerEmpresas = async (req, res) => {
-  
+  const empresas = await Empresa.find().where('creador').equals(req.usuario)
+  res.json(empresas);
 };
 
 
 const obtenerEmpresa = async (req, res) => {
+  const {id} = req.params;
+  const empresa = await Empresa.findById(id)
+  !proyecto? res.status(400).json({msg: "No Encontrado"}): 
+  res.json(empresa);
   
+
 };
 
 const editarEmpresa = async (req, res) => {

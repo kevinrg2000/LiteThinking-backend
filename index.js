@@ -12,6 +12,7 @@ conectarDB();
 
 
 //routing
+
 app.use("/api/usuarios", usuarioRoutes)
 app.use("/api/empresas", empresasRoutes)
 
