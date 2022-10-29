@@ -1,21 +1,23 @@
 import express from "express";
 import {
+  obtenerArticulos,
   agregarArticulo,
   obtenerArticulo,
-  actualizarArticulo,
+  editarArticulo,
   eliminarArticulo,
-  cambiarEstado,
 } from "../controllers/articuloController.js";
 import checkAuth from "../middleware/checkAuth.js";
 
 const router = express.Router();
 
-router.post("/", checkAuth, agregarArticulo);
+router
+  .post("/", checkAuth, agregarArticulo)
+  .get("/", checkAuth, obtenerArticulos)
+  
 router
   .route("/:id")
   .get(checkAuth, obtenerArticulo)
-  .put(checkAuth, actualizarArticulo)
+  .put(checkAuth, editarArticulo)
   .delete(checkAuth, eliminarArticulo);
 
-router.post("/estado/:id", checkAuth, cambiarEstado);
 export default router;
