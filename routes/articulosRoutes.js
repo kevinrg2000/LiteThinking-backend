@@ -10,12 +10,12 @@ import checkAuth from "../middleware/checkAuth.js";
 const router = express.Router();
 
 router
-  .post("/", checkAuth, agregarArticulo)
+  .post("/", checkAuth, agregarArticulo) //agrega un articulo a una empresa
   
 router
   .route("/:id")
-  .get(checkAuth, obtenerArticulo)
-  .put(checkAuth, editarArticulo)
-  .delete(checkAuth, eliminarArticulo);
+  .get(checkAuth, obtenerArticulo) // obtiene 1 articulo
+  .put(checkAuth, editarArticulo) // edita 1 articlo 
+  .delete(checkAuth, eliminarArticulo); // elimina 1 articulo 
 
 export default router;

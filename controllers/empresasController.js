@@ -30,8 +30,6 @@ const obtenerEmpresa = async (req, res) => {
     else{
       let jsonObject = {empresa, articulos}
       
-      console.log('articulos:',articulos);
-      
       for(let i=0; i<articulos.length; i++){
         doc.text(10, 10 + (i * 10),
         " NOMBRE : "+ articulos[i].nombre+
