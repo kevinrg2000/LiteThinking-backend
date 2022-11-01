@@ -26,7 +26,7 @@ const registrar = async (req, res) => {
     });
 
     res.json({
-      msg: "Usuario Creado Correctamente, Revisa tu Email para confirmar tu cuenta",
+      msg: "Usuario Creado Correctamente, por favor revise su correo electronico",
     });
   } catch (error) {
     console.log(error);
@@ -56,6 +56,7 @@ const autenticar = async (req, res) => {
       nombre: usuario.nombre,
       email: usuario.email,
       token: generarJWT(usuario._id),
+      tipo: usuario.tipo,
     });
   } else {
     const error = new Error("El Password es Incorrecto");

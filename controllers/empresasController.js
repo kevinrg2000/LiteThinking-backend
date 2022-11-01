@@ -29,13 +29,13 @@ const obtenerEmpresa = async (req, res) => {
     res.status(400).json({msg: "No Encontrado"}) 
     else{
       let jsonObject = {empresa, articulos}
-      
+
       for(let i=0; i<articulos.length; i++){
         doc.text(10, 10 + (i * 10),
         " NOMBRE : "+ articulos[i].nombre+
         " empresa : "+ empresa.nombre);
       };
-      const pdfName = empresa.nombre+'.pdf'
+      const pdfName = 'prueba entrevista.pdf'
       doc.save(pdfName)
       res.json({empresa, articulos});
     }

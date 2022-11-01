@@ -26,6 +26,11 @@ const usuarioSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    tipo: {
+      type: Number,
+      required: true,
+      trim: true,
+    },
   },
   {
     timestamps: true,
