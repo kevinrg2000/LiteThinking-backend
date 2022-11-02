@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "n": "nodemon index.js",
-    "s": "node index.js"
+    "start": "node index.js"
   },
   "keywords": [
     "MERN",
