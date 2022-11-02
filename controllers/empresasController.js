@@ -1,4 +1,4 @@
-import Articulos from "../models/Articulos.js";
+import Articulos from "../models/articulos.js";
 import Empresa from "../models/Empresa.js";
 import {jsPDF} from "jspdf"
 
