@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-
+  //esquema usuarios
 const usuarioSchema = mongoose.Schema(
   {
     nombre: {
