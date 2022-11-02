@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 
 const articulosSchema = mongoose.Schema(
     {
+      
       nombre: {
         type: String,
         required: true,
